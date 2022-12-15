@@ -1,0 +1,67 @@
+-- Author: Samuel Rettig
+
+-- SELECT * FROM hw1_q1.events;
+
+SELECT count(*) as num_events
+ FROM hw1_q1.events;
+ -- Question 1a Answer
+ 
+SELECT vid, sched_date 
+ from hw1_q1.events 
+ where location != 'ISU Campus';
+ -- Question 1b Answer 
+ 
+ SELECT e.vid, e.sched_date, e.location
+ from participates b, events e, persons p 
+ where p.pname = 'Pak' and p.pid = b.pid and b.vid = e.vid and b.sched_date = e.sched_date;
+ -- Question 1c Answer 
+ 
+SELECT e.vid, e.sched_date, e.location
+ from events e, participates b, persons p
+ where (p.pname = 'Pak' or p.pname = 'John') and p.pid = b.pid and b.vid = e.vid and b.sched_date = e.sched_date
+ order by e.sched_date desc;
+ -- Question 1d Answer 
+ 
+ SELECT b1.vid
+ FROM participates b1, participates b2, participates b3, persons p1, persons p2, persons p3
+ where p1.pname = 'John' and p2.pname = 'Mary' and p3.pname = 'Jane'
+ and p1.pid = b1.pid and p2.pid = b2.pid and p3.pid = b3.pid
+ and b1.vid = b2.vid = b3.vid;
+ -- Question 1e Answer 
+
+ 
+SELECT p.pname
+ FROM hw1_q1.participates b
+ RIGHT JOIN persons p ON b.pid = p.pid where b.pid is null;
+ -- Question 1f Answer 
+ 
+ 
+ 
+ SELECT b.pid, b.pname
+ FROM hw1_q1.persons b
+ group by pid
+ having 2<=(
+ select count(pid)
+ from hw1_q1.participates p
+ where p.pid = b.pid )
+ order by pid asc;
+ -- Question 1g Answer 
+ 
+ SELECT v.venue_id, v.name
+ FROM hw1_q1.venues v
+ where not exists
+ (
+ select p.vid
+ from hw1_q1.participates p
+ where p.vid = v.venue_id);
+ -- Question 1h Answer 
+ 
+ SELECT v.venue_id, v.name
+ FROM hw1_q1.venues v
+ where v.venue_id not in 
+ (
+ select p.vid
+ from hw1_q1.participates p
+ where p.vid = v.venue_id);
+ -- Question 1i Answer 
+ 

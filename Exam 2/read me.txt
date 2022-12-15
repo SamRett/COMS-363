@@ -1,0 +1,21 @@
+Exam 2 is ER and changing to code (HW2)
+
+Topics covered in the exam:
+
+- Database design process
+
+Entity-Relationship (ER) Model
+Drawing an ER diagram from a database requirement
+Limitations of the ER model
+Relational Data Model (RDB)
+schemas, primary key, foreign keys, other constraints
+- Designing relational database schemas from an ER diagram to reduce unnecessary redundancies while capturing as 
+many constraints as possible given in the ER diagram.
+
+Relevant materials:
+
+Lectures and PowerPoint files about the above materials: WK3-Database_Design_Process, WK3-RelationalDatabaseDesign, 
+WK3-ER-Part1, WK4-ER-Part2
+Class participation problems and solutions for Weeks 3-5
+Homework 2
+Practice problems for Exam 2

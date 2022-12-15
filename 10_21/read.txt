@@ -1,0 +1,10 @@
+1: we tell it when to commit
+
+
+look for next highest fid, then insert there
+
+2:
+
+change mongolian beef to insert value
+
+3:

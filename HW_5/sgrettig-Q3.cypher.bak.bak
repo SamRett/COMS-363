@@ -1,0 +1,78 @@
+//Author: Samuel Rettig
+// ID: sgrettig
+
+drop database neo4j if exists;
+create database neo4j;
+start database neo4j;
+:use neo4j;
+//Database stuff
+
+//match (a) -[r] -> () delete a, r
+//run seperately 
+//match(a) delete a
+
+drop index SuppliersIdx1 if exists;
+drop index PartsIdx1 if exists;
+drop index ProjectsIdx1 if exists;
+drop index SuppliersIdx2 if exists;
+drop index PartsIdx2 if exists;
+drop index ProjectsIdx2 if exists;
+drop index SuppliersIdx3 if exists;
+drop index PartsIdx3 if exists;
+drop index ProjectsIdx3 if exists;
+//ensuring index uniqueness from prior iterations
+
+create (:Suppliers {Sname:'ALDI', SID:1});
+create (:Parts {Pname:'Cheese', PID:1});
+create (:Projects {Jname:'Pizza', JID:1});
+create (:SPJ1 {Qty:700});
+
+match (Aldi:Suppliers{Sname:'Aldi'})
+match (Cheese:Parts {Pname:'Cheese'})
+match (Pizza:Projects {Jname:'Pizza'})
+create ((Aldi)-[:Supplies]->(:SPJ1)<-[:Part]-(Cheese)),
+((Aldi)-[:Supplies]->(:SPJ1)-[:Project]->(Pizza));
+
+create index SuppliersIdx1 for (s:Suppliers) on (s.SID); 
+create index PartsIdx1 for (p:Parts) on (p.PID); 
+create index ProjectsIdx1 for (j:Projects) on (j.JID); 
+
+
+//Above is first "set"
+
+create (:Suppliers2 {Sname:'Playstation', SID:5});
+create (:Parts2 {Pname:'Game', PID:8});
+create (:Projects2 {Jname:'GodOfWar', JID:9});
+create (:SPJ2 {Qty:1000000});
+
+match (Playstation:Suppliers2{Sname:'Playstation'})
+match (Game:Parts2 {Pname:'Game'})
+match (GodofWar:Projects2 {Jname:'GodofWar'})
+create ((Playstation)-[:Supplies2]->(:SPJ2)<-[:Part2]-(Game)),
+((Playstation)-[:Supplies2]->(:SPJ2)-[:Project2]->(GodofWar));
+
+
+create index SuppliersIdx2 for (s:Suppliers2) on (s.SID); 
+create index PartsIdx2 for (p:Parts2) on (p.PID); 
+create index ProjectsIdx2 for (j:Projects2) on (j.JID); 
+
+// Above is second set of nodes
+
+
+create (:Suppliers3 {Sname:'Xbox', SID:1});
+create (:Parts3 {Pname:'Developers', PID:4});
+create (:Projects3 {Jname:'Halo', JID:6});
+create (:SPJ3 {Qty:1000012});
+
+match (Xbox:Suppliers3{Sname:'Xbox'})
+match (Developers:Parts3 {Pname:'Developers'})
+match (Halo:Projects3 {Jname:'Halo'})
+create ((Xbox)-[:Supplies3]->(:SPJ3)<-[:Part3]-(Developers)),
+((Xbox)-[:Supplies3]->(:SPJ3)-[:Project3]->(Halo));
+
+create index SuppliersIdx3 for (s:Suppliers3) on (s.SID); 
+create index PartsIdx3 for (p:Parts3) on (p.PID); 
+create index ProjectsIdx3 for (j:Projects3) on (j.JID);
+
+
+

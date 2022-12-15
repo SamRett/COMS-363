@@ -1,0 +1,4 @@
+for 2_1, 2_2 use the DDL/DML in 9/28 to make it easy. very similar.
+
+
+cannot enforce bold line w/out arrow

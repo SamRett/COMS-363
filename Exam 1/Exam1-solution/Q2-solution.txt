@@ -1,0 +1,104 @@
+Q2.a (6 points)
+
+Students see common deductions. 
+
+-- a1: (2pt) for True
+   Since the primary key of persons_join_venues is (pid, venue_id, sched_date), 
+   different pid values are allowed for the same combination of venue_id and sched_date values 
+   
+-- a2: (2pt) for True
+   Since the primary key of persons_join_venues is (pid, venue_id, sched_date), 
+   the same combination of pid and venue_id values are allowed with different sched_date values.
+   
+-- a3: (2pt) for False
+   Since the primary key of persons_join_venues is (pid, venue_id, sched_date), the 
+   value of sched_date cannot be null.
+  
+-- a4: (1pt) for attempting all answers, but did not get the answers correctly
+
+----------------
+
+Q2.b (10 points)
+
+See pages 1-7 of WK3_RelationalDatabaseDesign PowerPoint file
+Insertion anomaly: It may not be possible to store some information unless some other information is stored as well.  
+deletion anomaly: It may not be possible to delete some information without losing some other information as well.
+Update anomaly: If one copy of such repeated data is updated, an inconsistency is created unless all copies are similarly updated.
+ 
+b1: (4pt) for insertion anomaly
+   Show that a new person (with only a new pid value not already in the table) cannot be inserted without knowing the venue_id and sched_date values since the primary key of persons_join_venues is (pid, venue_id, sched_date)
+   
+   Or showing that a new venue (with a new venue_id value) cannot be inserted without knowing the values of venue_id and sched_date
+   
+   Or showing that a new sched_date value cannot be inserted without knowing the values of pid, and venue_id.
+   
+   
+b2: (3pt) for deletion anomaly
+
+    For instance, deletion of all the attendance data (i.e, people attending the same venue_id), 
+	resulting in unintentional loss of data about the venue_name and venue_desc and all the data about the events associated with that venue. This does not happen when using Design C.
+	
+	To get a full credit, the answer needs to show the unintentional loss of data, not the data you intend to delete.
+	Example: Deletion of the last row with pid of 103 (Jane) who is the only atttendance to the venue_id 1 scheduled on 2017-10-20 
+	resulting in the unintentional loss about the data about the venue_id 1, the Grace Hopper Conference.
+
+    Note that pname is not unique, so pointing out the exact rows are needed.
+	
+b3: (3pt) for update anomaly
+
+    There are several rows with the same venue_name (e.g., Science Bound) for the same venue_id (e.g., venue_id of 2), 
+	if we want to change the venue_name of venue_id of 2 from "Science Bound" to "New Science Bound 2", we need to update all the venue_name of all rows with the venue_id of 2 to the "New Science Bound" to avoid inconsistency in the venue name. 
+
+    An example about inconsistency of venue_desc values of the same venue_id is also correct.
+
+    An example about inconsistency of location values needs to indicate the rows in Figure 2 with the same venue_id and sched_date. 
+	Using the venue_id is not enough since a venue can have several events associated with it.
+	
+	An example about inconsistency due to the update of the pid value is not valid since it could mean a new person entirely. 
+	
+	An example about inconsistency due to the update of the venue_id value is not valid since it could mean a totally different venue.  
+	
+
+b4: (1pt) for attempting hard to answer all the questions, but did not get it incorrectly.
+
+---------------------------------
+Q2.c (7 points) 
+
+- Yes/No: No (2 pt)
+
+- Reason/Example: (5pt):
+
+2.c.
+c1: (4pt): Identify correct problematic rows in Figure 2 for why some such rows cannot be stored in Design B.
+c2: (4pt): Or correct reason is provided.
+
+c3: (1pt): For attempting to answer both subquestions, but did not get them correct.
+
+ - Case 1: Because pid of participats_joins of Design B is a primary key, 
+      it does not allow one person to attend multiple events.
+	 
+	- For rows 2 and 3 of Fig. 2 with Mary (pid of 101) attending two different venues 
+	  (venue_id 2 and venue_id of 6), 
+	  
+      In Design B, if participants_joins already has a row with pid of 101 and venue_id of 2, 
+	  a row where with pid=101 and venue_id 6 is not allowed.
+
+ - Case 2: Because venue_id is unique and not null in Design B, if 
+	row 3 with venue_id of 6 in Figure 2 cannot be stored if row 1 with venue_id of 6 is already 
+	stored in participants_joins.
+	
+ 
+2.d 
+d1: (2pt) for True
+     since pid, vid, sched_date form the primary key, different pid values are allowed 
+	 for the same venue_id value
+
+d2: (2pt) for True
+    since  pid, vid, sched_date form the primary key, different sched_date values are allowed 
+	for the same pid value going to the same venue_id value
+
+d3: (2pt) for True
+    since the venues table only requires venue_id and name 
+
+d4: (2pt) for False
+     since the persons table only requires pid and pname, we do not need the the venue information.

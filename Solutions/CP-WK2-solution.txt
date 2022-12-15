@@ -1,0 +1,7 @@
+CP-WK2 solution:
+Also some of these SQL queries are for the queries given for CP-WK1 but using threetables database instead.
+Group 1: A, D, H
+Group 2: B
+Group 3: C
+Group 4: E, G, I
+Group 5: F

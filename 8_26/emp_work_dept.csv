@@ -1,0 +1,33 @@
+eid,ename,salary,did,dname,budget,managerid,pct_time
+100,John,3000000,4,"Human Resource",800000,NULL,10
+100,John,3000000,5,Accounting,750000,118,40
+100,John,3000000,6,Maintenance,3000000,105,15
+101,John,2500000,1,"Information Technology",1500000,NULL,20
+101,John,2500000,5,Accounting,750000,118,20
+102,Dean,1200000,1,"Information Technology",1500000,NULL,20
+102,Dean,1200000,5,Accounting,750000,118,35
+103,Steve,2000000,1,"Information Technology",1500000,NULL,30
+103,Steve,2000000,2,Production,2000000,105,25
+103,Steve,2000000,6,Maintenance,3000000,105,15
+104,Dwayne,5000000,1,"Information Technology",1500000,NULL,10
+104,Dwayne,5000000,2,Production,2000000,105,35
+105,Paul,4000000,2,Production,2000000,105,25
+105,Paul,4000000,3,Administration,2000000,105,15
+105,Paul,4000000,6,Maintenance,3000000,105,10
+106,Mark,3500000,1,"Information Technology",1500000,NULL,40
+106,Mark,3500000,6,Maintenance,3000000,105,20
+107,Jacob,3500000,2,Production,2000000,105,25
+107,Jacob,3500000,6,Maintenance,3000000,105,30
+108,Adam,2500000,2,Production,2000000,105,25
+108,Adam,2500000,6,Maintenance,3000000,105,10
+109,Jason,2000000,2,Production,2000000,105,15
+110,Chris,2750000,3,Administration,2000000,105,15
+111,Kevin,900000,3,Administration,2000000,105,30
+112,Antonio,950000,3,Administration,2000000,105,30
+113,Alexander,800000,3,Administration,2000000,105,10
+114,Brie,500000,4,"Human Resource",800000,NULL,30
+115,Lita,300000,4,"Human Resource",800000,NULL,30
+116,Nikki,600000,4,"Human Resource",800000,NULL,20
+117,Mickey,400000,4,"Human Resource",800000,NULL,40
+118,Beth,400000,5,Accounting,750000,118,10
+119,Kelly,300000,5,Accounting,750000,118,30

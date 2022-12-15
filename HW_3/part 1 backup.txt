@@ -1,0 +1,6 @@
+-- select COUNT(distinct u.state, h.name) as statenum, group_concat(distinct u.state) as state, h.name
+-- from practice.hashtags h, users u, tweets t
+-- where u.state != 'na' and t.post_year = year_num and h.tid = t.tid and u.screen_name = t.posting_user
+-- group by h.name
+-- order by COUNT(distinct u.state, h.name) desc
+-- limit k;

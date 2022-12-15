@@ -1,0 +1,41 @@
+// Create Suppliers Database
+// remove all nodes and edges
+MATCH (n) OPTIONAL MATCH (n)-[r]-()
+DELETE n, r;
+
+// remove the Parts label 
+MATCH (n:Parts)
+REMOVE n:Parts;
+
+// remove the Suppliers label
+MATCH (n:Suppliers)
+REMOVE n:Suppliers;
+
+DROP CONSTRAINT pid_notnull if exists;
+DROP CONSTRAINT pid_unique if exists;
+
+DROP CONSTRAINT sid_notnull if exists;
+DROP CONSTRAINT sid_unique if exists;
+
+// Put a constraint to ensure that pid is unique
+CREATE CONSTRAINT pid_unique FOR (p:Parts) REQUIRE p.pid IS UNIQUE;
+CREATE CONSTRAINT pid_notnull FOR (p:Parts) REQUIRE p.pid IS NOT NULL;
+
+// Create one node per line; the node has the label Parts
+LOAD CSV WITH HEADERS FROM 'file:///parts.csv' AS line FIELDTERMINATOR ';'
+CREATE (:Parts { pid:toInteger(line.pid), pname: line.pname, color:line.color});
+
+CREATE CONSTRAINT sid_unique FOR (s:Suppliers) REQUIRE s.sid IS UNIQUE;
+CREATE CONSTRAINT sid_notnull FOR (s:Suppliers) REQUIRE s.sid IS NOT NULL;
+
+// Create one node per line; the node has the label Suppliers
+LOAD CSV WITH HEADERS FROM 'file:///suppliers.csv' AS line FIELDTERMINATOR ';'
+CREATE (:Suppliers { sid:toInteger(line.sid), sname: line.sname, address:line.address});
+
+
+// Create one edge per line; the edge labeled SUPPLIES from node with 
+// the supplier id to the node with the part id and the cost from the csv file
+LOAD CSV WITH HEADERS FROM "file:///supplies.csv" AS line FIELDTERMINATOR ';'
+MERGE (p:Parts {pid: toInteger(line.pid)})
+MERGE (s:Suppliers {sid:toInteger(line.sid)})
+CREATE (s)-[:SUPPLIES{cost:toInteger(line.cost)}]->(p);

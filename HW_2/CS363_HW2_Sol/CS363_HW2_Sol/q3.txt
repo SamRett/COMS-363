@@ -1,0 +1,5 @@
+The total participation of the “Managers” entity set into the “Employees” relationship set.
+
+The total participation of the “Products” entity set into the “Brought From” relationship set.
+
+The non-overlapping constraint between “Hourly_Workers”, “FullTime_Workers”, and “Managers” entity sets.

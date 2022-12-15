@@ -1,0 +1,11 @@
+-- Samuel Rettig
+
+Constraint 1:
+One conststraint that cannot be applied is the total particapation for the Employees 
+table. given the current design, it cannot be effectively be modeled.
+
+
+Constraint 2:
+
+In the bought_from table, the total particapation cannot also be enforced here as well.
+It comes initially from the products entity set, and requires a trigger to be enforced. 
